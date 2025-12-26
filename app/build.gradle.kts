@@ -2,6 +2,7 @@ plugins {
 //    id("java")
     id("com.github.ben-manes.versions") version "0.53.0"
     application
+    id("org.sonarqube") version "7.2.2.6593"
 }
 
 group = "hexlet.code"
@@ -26,4 +27,11 @@ application {
 
 tasks.getByName("run", JavaExec::class) {
     standardInput = System.`in`
+}
+
+sonar {
+    properties {
+        property("sonar.projectKey", "MixsonV_java-project-61")
+        property("sonar.organization", "mixsonv")
+    }
 }
