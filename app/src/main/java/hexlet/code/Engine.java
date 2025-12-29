@@ -91,11 +91,11 @@ public final class Engine {
         System.exit(0);
     }
 
-    public void printQuestion(String question) {
+    public void printQuestion(Object question) {
         System.out.println("Question: " + question);
     }
 
-    public void printAnswer(String answer) {
+    public void printAnswer(Object answer) {
         System.out.println("Your answer: " + answer);
     }
 
@@ -103,11 +103,20 @@ public final class Engine {
         System.out.println("Correct!");
     }
 
-    public void wrongAnswer(String answer, String correctAnswer) {
+    public void wrongAnswer(Object answer, Object correctAnswer) {
         System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was " + "'" + correctAnswer + "'.");
     }
 
-    public void printRule(String rule) {
+    public void checkAnswer(Object answer, Object correctAnswer) {
+        if (answer.equals(correctAnswer)) {
+            correctAnswer();
+        } else {
+            wrongAnswer(answer, correctAnswer);
+            endGame();
+        }
+    }
+
+    public void printRule(Object rule) {
         System.out.println(rule);
     }
 }

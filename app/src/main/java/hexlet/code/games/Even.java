@@ -10,15 +10,13 @@ public class Even {
 
         for (var i = 0; i < engine.getRounds(); i++) {
             int number = engine.getRandomNumberLockedRange();
-            engine.printQuestion(number + " is even?");
+            engine.printQuestion(number);
             String answer = engine.getScanner().next();
             engine.printAnswer(answer);
-            if (number % 2 == 0 && answer.equals("yes") || number % 2 != 0 && answer.equals("no")) {
-                engine.correctAnswer();
+            if (number % 2 == 0) {
+                engine.checkAnswer(answer, "yes");
             } else {
-                String correctAnswer = answer.equals("yes") ? "no" : "yes";
-                engine.wrongAnswer(answer, correctAnswer);
-                engine.endGame();
+                engine.checkAnswer(answer, "no");
             }
         }
 

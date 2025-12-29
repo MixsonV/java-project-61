@@ -7,15 +7,22 @@
 [![asciicast](https://asciinema.org/a/3hHr9BShenZe14bwq64R3A5OW.svg)](https://asciinema.org/a/3hHr9BShenZe14bwq64R3A5OW)
 
 # Игра "Проверка на чётность"
-### Суть игры в следующем: пользователю показывается случайное число, и он должен определить является ли это число чётным (yes) или нечётным (no).
+### Суть игры в следующем: пользователю показывается случайное число, и он должен определить является ли это число чётным или нечётным, написав ответ "yes" или "no" соответственo.
 ### Демо с победой:
 [![asciicast](https://asciinema.org/a/Da0LFf2m2M93FIiaoDN1flBuA.svg)](https://asciinema.org/a/Da0LFf2m2M93FIiaoDN1flBuA)
 ### Демо с поражением:
 [![asciicast](https://asciinema.org/a/W51wzn1efiZsg62hTe2VFi398.svg)](https://asciinema.org/a/W51wzn1efiZsg62hTe2VFi398)
 
 # Игра "Калькулятор":
-### Суть игры в следующем: пользователю показывается случайное математическое выражение, которое нужно вычислить и записать правильный ответ.
+### Суть игры в следующем: пользователю показывается случайное математическое выражение, которое нужно вычислить и написать результат это выражения.
 ### Демо с победой:
 [![asciicast](https://asciinema.org/a/A6hPrC4TbCZuKvMLfrz97e6sD.svg)](https://asciinema.org/a/A6hPrC4TbCZuKvMLfrz97e6sD)
 ### Демо с поражением:
 [![asciicast](https://asciinema.org/a/Rmln3LiM5eu5ZCMLDLVknQsKl.svg)](https://asciinema.org/a/Rmln3LiM5eu5ZCMLDLVknQsKl)
+
+# Игра "НОД":
+### Суть игры в следующем: пользователю показывается два случайных числа, из которых пользователь должен вычислить наибольший общий делитель и написать это число.
+### Демо с победой:
+[![asciicast](https://asciinema.org/a/lWcEIOO5tZlhR1Whxh7O5Y9ki.svg)](https://asciinema.org/a/lWcEIOO5tZlhR1Whxh7O5Y9ki)
+### Демо с поражением:
+[![asciicast](https://asciinema.org/a/SyD3ONZ1APNKdDvlKbabAYfZp.svg)](https://asciinema.org/a/SyD3ONZ1APNKdDvlKbabAYfZp)

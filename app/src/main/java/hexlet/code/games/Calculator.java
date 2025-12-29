@@ -16,35 +16,17 @@ public class Calculator {
             int number2 = engine.getRandomNumberLockedRange();
             engine.printQuestion(number1 + " " + symbol + " " + number2);
             int answer = engine.getScanner().nextInt();
-            engine.printAnswer(answer + "");
+            engine.printAnswer(answer);
 
             switch (symbol) {
                 case '+':
-                    int resultPlus = number1 + number2;
-                    if (answer == resultPlus) {
-                        engine.correctAnswer();
-                    } else {
-                        engine.wrongAnswer(answer + "", resultPlus + "");
-                        engine.endGame();
-                    }
+                    engine.checkAnswer(answer, number1 + number2);
                     break;
                 case '-':
-                    int resultSub = number1 - number2;
-                    if (answer == resultSub) {
-                        engine.correctAnswer();
-                    } else {
-                        engine.wrongAnswer(answer + "", resultSub + "");
-                        engine.endGame();
-                    }
+                    engine.checkAnswer(answer, number1 - number2);
                     break;
                 case '*':
-                    int resultMultiply = number1 * number2;
-                    if (answer == resultMultiply) {
-                        engine.correctAnswer();
-                    } else {
-                        engine.wrongAnswer(answer + "", resultMultiply + "");
-                        engine.endGame();
-                    }
+                    engine.checkAnswer(answer, number1 * number2);
                     break;
                 default:
                     engine.endGame();
