@@ -3,6 +3,7 @@ package hexlet.code;
 import hexlet.code.games.Calculator;
 import hexlet.code.games.Even;
 import hexlet.code.games.GCD;
+import hexlet.code.games.Progression;
 
 class App {
     public static final Engine ENGINE = new Engine();
@@ -12,6 +13,7 @@ class App {
     private static final int MENU_EVEN = 2;
     private static final int MENU_CALCULATOR = 3;
     private static final int MENU_GCD = 4;
+    private static final int MENU_PROGRESSION = 5;
 
     public static void main(String[] args) {
         ENGINE.meetingPlayer();
@@ -35,6 +37,9 @@ class App {
             case MENU_CALCULATOR:
                 Calculator.start(ENGINE);
                 break;
+            case MENU_PROGRESSION:
+                Progression.start(ENGINE);
+                break;
             default:
                 break;
         }
@@ -46,6 +51,7 @@ class App {
         System.out.println(MENU_EVEN + " - Even");
         System.out.println(MENU_CALCULATOR + " - Calculator");
         System.out.println(MENU_GCD + " - GCD");
+        System.out.println(MENU_PROGRESSION + " - Progression");
         System.out.println(MENU_EXIT + " - Exit");
         System.out.print("Your Choice: ");
     }

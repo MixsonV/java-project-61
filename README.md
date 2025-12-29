@@ -26,3 +26,10 @@
 [![asciicast](https://asciinema.org/a/lWcEIOO5tZlhR1Whxh7O5Y9ki.svg)](https://asciinema.org/a/lWcEIOO5tZlhR1Whxh7O5Y9ki)
 ### Демо с поражением:
 [![asciicast](https://asciinema.org/a/SyD3ONZ1APNKdDvlKbabAYfZp.svg)](https://asciinema.org/a/SyD3ONZ1APNKdDvlKbabAYfZp)
+
+# Игра "Арифметическая прогрессия":
+### Суть игры в следующем: показываем игроку ряд чисел, образующий арифметическую прогрессию, заменив любое из чисел двумя точками. Игрок должен определить это число и написать это число.
+### Демо с победой:
+[![asciicast](https://asciinema.org/a/OeVfzUdQD7mQ1UnAsPtyhIZUm.svg)](https://asciinema.org/a/OeVfzUdQD7mQ1UnAsPtyhIZUm)
+### Демо с поражением:
+[![asciicast](https://asciinema.org/a/z1Lbb1aIIwJTOryLe17zstWgd.svg)](https://asciinema.org/a/z1Lbb1aIIwJTOryLe17zstWgd)

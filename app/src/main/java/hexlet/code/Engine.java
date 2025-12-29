@@ -69,7 +69,7 @@ public final class Engine {
 
     // get random number in range [0, maxRange]
     public int getRandomNumber(int newMaxRange) {
-        return random.nextInt(maxRange);
+        return random.nextInt(newMaxRange);
     }
 
     // get random number in range [minRange, maxRange]
