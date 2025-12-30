@@ -4,6 +4,7 @@ import hexlet.code.games.Calculator;
 import hexlet.code.games.Even;
 import hexlet.code.games.GCD;
 import hexlet.code.games.Progression;
+import hexlet.code.games.Prime;
 
 class App {
     public static final Engine ENGINE = new Engine();
@@ -14,6 +15,7 @@ class App {
     private static final int MENU_CALCULATOR = 3;
     private static final int MENU_GCD = 4;
     private static final int MENU_PROGRESSION = 5;
+    private static final int MENU_PRIME = 6;
 
     public static void main(String[] args) {
         ENGINE.meetingPlayer();
@@ -40,6 +42,9 @@ class App {
             case MENU_PROGRESSION:
                 Progression.start(ENGINE);
                 break;
+            case MENU_PRIME:
+                Prime.start(ENGINE);
+                break;
             default:
                 break;
         }
@@ -52,6 +57,7 @@ class App {
         System.out.println(MENU_CALCULATOR + " - Calculator");
         System.out.println(MENU_GCD + " - GCD");
         System.out.println(MENU_PROGRESSION + " - Progression");
+        System.out.println(MENU_PRIME + " - Prime");
         System.out.println(MENU_EXIT + " - Exit");
         System.out.print("Your Choice: ");
     }

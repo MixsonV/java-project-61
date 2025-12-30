@@ -7,7 +7,7 @@
 [![asciicast](https://asciinema.org/a/3hHr9BShenZe14bwq64R3A5OW.svg)](https://asciinema.org/a/3hHr9BShenZe14bwq64R3A5OW)
 
 # Игра "Проверка на чётность"
-### Суть игры в следующем: пользователю показывается случайное число, и он должен определить является ли это число чётным или нечётным, написав ответ "yes" или "no" соответственo.
+### Суть игры в следующем: пользователю показывается случайное число, и он должен определить является ли это число чётным или нечётным, написав ответ "yes" или "no" соответственно.
 ### Демо с победой:
 [![asciicast](https://asciinema.org/a/Da0LFf2m2M93FIiaoDN1flBuA.svg)](https://asciinema.org/a/Da0LFf2m2M93FIiaoDN1flBuA)
 ### Демо с поражением:
@@ -33,3 +33,10 @@
 [![asciicast](https://asciinema.org/a/OeVfzUdQD7mQ1UnAsPtyhIZUm.svg)](https://asciinema.org/a/OeVfzUdQD7mQ1UnAsPtyhIZUm)
 ### Демо с поражением:
 [![asciicast](https://asciinema.org/a/z1Lbb1aIIwJTOryLe17zstWgd.svg)](https://asciinema.org/a/z1Lbb1aIIwJTOryLe17zstWgd)
+
+# Игра "Простое ли число?":
+### Суть игры в следующем: пользователю показывается случайное число, и он должен определить является ли это число простым или нет, написав ответ "yes" или "no" соответственно.
+### Демо с победой:
+[![asciicast](https://asciinema.org/a/eLNXcKoPocIL4VZG59MYZ3ubR.svg)](https://asciinema.org/a/eLNXcKoPocIL4VZG59MYZ3ubR)
+### Демо с поражением:
+[![asciicast](https://asciinema.org/a/7bkgpRB956wpcaOXBvkHzSGfS.svg)](https://asciinema.org/a/7bkgpRB956wpcaOXBvkHzSGfS)
