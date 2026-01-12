@@ -5,24 +5,17 @@ import hexlet.code.Engine;
 public class Prime {
     private static final String RULE = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 
-    public static void start(Engine engine) {
-        engine.printRule(RULE);
+    public static void start() {
+        Engine engine = new Engine();
+        engine.printMessage(RULE);
 
+        Object[][] objects = new Object[engine.getRounds()][2];
         for (int i = 0; i < engine.getRounds(); i++) {
             int number = engine.getRandomNumberLockedRange();
-            engine.printQuestion(number);
-
-            String answer = engine.getScanner().next();
-            engine.printAnswer(answer);
-
-            if (isPrimeNumber(number)) {
-                engine.checkAnswer(answer, "yes");
-            } else {
-                engine.checkAnswer(answer, "no");
-            }
+            objects[i] = new Object[]{number, isPrimeNumber(number) ? "yes" : "no"};
         }
 
-        engine.winGame();
+        engine.startQuiz(objects);
     }
 
     public static boolean isPrimeNumber(int number) {

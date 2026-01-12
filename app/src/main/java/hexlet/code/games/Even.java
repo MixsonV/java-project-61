@@ -5,21 +5,16 @@ import hexlet.code.Engine;
 public class Even {
     private static final String RULE = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
-    public static void start(Engine engine) {
-        engine.printRule(RULE);
+    public static void start() {
+        Engine engine = new Engine();
+        engine.printMessage(RULE);
 
+        Object[][] objects = new Object[engine.getRounds()][2];
         for (var i = 0; i < engine.getRounds(); i++) {
             int number = engine.getRandomNumberLockedRange();
-            engine.printQuestion(number);
-            String answer = engine.getScanner().next();
-            engine.printAnswer(answer);
-            if (number % 2 == 0) {
-                engine.checkAnswer(answer, "yes");
-            } else {
-                engine.checkAnswer(answer, "no");
-            }
+            objects[i] = new Object[]{number, number % 2 == 0 ? "yes" : "no"};
         }
 
-        engine.winGame();
+        engine.startQuiz(objects);
     }
 }

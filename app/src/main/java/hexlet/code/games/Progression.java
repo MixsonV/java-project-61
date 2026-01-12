@@ -8,37 +8,41 @@ public class Progression {
     private static final String RULE = "What number is missing in the progression?";
     private static final int MIN_LENGTH = 5;
     private static final int MAX_LENGTH = 11;
+    private static final String HIDING_SYMBOL = "..";
+    private static Engine engine;
 
-    public static void start(Engine engine) {
-        engine.printRule(RULE);
+    public static void start() {
+        engine = new Engine();
+        engine.printMessage(RULE);
 
-        for (var i = 0; i < engine.getRounds(); i++) {
-            int length = engine.getRandomNumber(MIN_LENGTH, MAX_LENGTH);
-            int hiddenPosition = engine.getRandomNumber(length);
-            String hidingSymbol = "..";
-            int currentNumber = engine.getRandomNumberLockedRange();
-            int hiddenNumber = currentNumber;
-            int step = engine.getRandomNumberLockedRange();
-            ArrayList<String> progression = new ArrayList<>();
-
-            for (var j = 0; j < length; j++) {
-                int number = currentNumber + step * j;
-                if (j == hiddenPosition) {
-                    hiddenNumber = number;
-                    progression.add(hidingSymbol);
-                } else {
-                    progression.add("" + number);
-                }
-            }
-
-            engine.printQuestion(String.join(", ", progression));
-
-            int answer = engine.getScanner().nextInt();
-            engine.printAnswer(answer);
-
-            engine.checkAnswer(answer, hiddenNumber);
+        Object[][] objects = new Object[engine.getRounds()][2];
+        for (int i = 0; i < engine.getRounds(); i++) {
+            objects[i] = createProgression();
         }
 
-        engine.winGame();
+        engine.startQuiz(objects);
+    }
+
+    public static Object[] createProgression() {
+        int length = engine.getRandomNumber(MIN_LENGTH, MAX_LENGTH);
+        int hiddenPosition = engine.getRandomNumber(length);
+        int hiddenNumber = 0;
+        int startNumber = engine.getRandomNumberLockedRange();
+        int step = engine.getRandomNumberLockedRange();
+        ArrayList<String> nums = new ArrayList<>();
+        for (var j = 0; j < length; j++) {
+            int number = findCurrentElement(startNumber, step, j);
+            if (j == hiddenPosition) {
+                hiddenNumber = number;
+                nums.add(HIDING_SYMBOL);
+            } else {
+                nums.add("" + number);
+            }
+        }
+        return new Object[]{String.join(", ", nums), hiddenNumber};
+    }
+
+    public static int findCurrentElement(int start, int step, int index) {
+        return start + step * index;
     }
 }

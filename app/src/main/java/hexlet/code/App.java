@@ -6,24 +6,25 @@ import hexlet.code.games.GCD;
 import hexlet.code.games.Progression;
 import hexlet.code.games.Prime;
 
-class App {
-    public static final Engine ENGINE = new Engine();
+import java.util.Scanner;
 
-    private static final int MENU_EXIT = 0;
-    private static final int MENU_GREET = 1;
-    private static final int MENU_EVEN = 2;
-    private static final int MENU_CALCULATOR = 3;
-    private static final int MENU_GCD = 4;
-    private static final int MENU_PROGRESSION = 5;
-    private static final int MENU_PRIME = 6;
+class App {
+
+    private static final String MENU_EXIT = "0";
+    private static final String MENU_GREET = "1";
+    private static final String MENU_EVEN = "2";
+    private static final String MENU_CALCULATOR = "3";
+    private static final String MENU_GCD = "4";
+    private static final String MENU_PROGRESSION = "5";
+    private static final String MENU_PRIME = "6";
 
     public static void main(String[] args) {
-        ENGINE.meetingPlayer();
-
+        meetingMessage();
         printMenu();
 
-        int choice = ENGINE.getScanner().nextInt();
-        switch (choice) {
+        Scanner scanner = new Scanner(System.in);
+        String choice = scanner.next();
+        switch (choice.toLowerCase()) {
             case MENU_EXIT:
                 System.exit(0);
                 break;
@@ -31,22 +32,23 @@ class App {
                 Cli.printGreets();
                 break;
             case MENU_EVEN:
-                Even.start(ENGINE);
+                Even.start();
                 break;
             case MENU_GCD:
-                GCD.start(ENGINE);
+                GCD.start();
                 break;
             case MENU_CALCULATOR:
-                Calculator.start(ENGINE);
+                Calculator.start();
                 break;
             case MENU_PROGRESSION:
-                Progression.start(ENGINE);
+                Progression.start();
                 break;
             case MENU_PRIME:
-                Prime.start(ENGINE);
+                Prime.start();
                 break;
             default:
-                break;
+                System.out.println("'" + choice + "' is not a valid menu item! Application will Exit!");
+                System.exit(0);
         }
     }
 
@@ -62,4 +64,8 @@ class App {
         System.out.print("Your Choice: ");
     }
 
+    public static void meetingMessage() {
+        System.out.println("Welcome to the Brain Games!");
+        Cli.greetsThePlayer();
+    }
 }
