@@ -6,76 +6,51 @@ import java.util.Scanner;
 public final class Engine {
     private static final int DEFAULT_MIN_RANGE = 1;
     private static final int DEFAULT_MAX_RANGE = 100;
-    private static final int DEFAULT_ROUNDS = 3;
+    public static final int DEFAULT_ROUNDS = 3;
 
-    private String userName;
-    private int minRange;
-    private int maxRange;
-    private int rounds;
-    private Scanner scanner;
-    private Random random;
+    private static String userName = Cli.getUserName();;
+    private static Scanner scanner = new Scanner(System.in);
+    private static Random random = new Random();
 
-    public Engine() {
-        userName = Cli.getUserName();
-        minRange = DEFAULT_MIN_RANGE;
-        maxRange = DEFAULT_MAX_RANGE;
-        rounds = DEFAULT_ROUNDS;
-        scanner = new Scanner(System.in);
-        random = new Random();
+    // get random number in range [DEFAULT_MIN_RANGE, DEFAULT_MAX_RANGE]
+    public static int getRandomNumberLockedRange() {
+        return getRandomNumber(DEFAULT_MIN_RANGE, DEFAULT_MAX_RANGE) + 1;
     }
 
-    public int getRounds() {
-        return rounds;
-    }
-
-    public void setMinRange(int newMinRange) {
-        if (newMinRange >= maxRange) {
-            setMaxRange(newMinRange + 1);
-        }
-        this.minRange = newMinRange;
-    }
-
-    public void setMaxRange(int newMaxRange) {
-        if (newMaxRange <= minRange) {
-            setMinRange(newMaxRange - 1);
-        }
-        this.maxRange = newMaxRange;
-    }
-
-    // get random number in range [this.minRange, this.maxRange]
-    public int getRandomNumberLockedRange() {
-        return getRandomNumber(minRange, maxRange) + 1;
-    }
-
-    // get random number in range [0, maxRange]
-    public int getRandomNumber(int newMaxRange) {
+    // get random number in range [0, newMaxRange]
+    public static int getRandomNumber(int newMaxRange) {
         return random.nextInt(newMaxRange);
     }
 
-    // get random number in range [minRange, maxRange]
-    public int getRandomNumber(int newMinRange, int newMaxRange) {
+    // get random number in range [newMinRange, newMaxRange]
+    public static int getRandomNumber(int newMinRange, int newMaxRange) {
         return random.nextInt(newMinRange, newMaxRange);
     }
 
-    public void startQuiz(Object[][] quiz) {
-        for (Object[] objects : quiz) {
-            printQuestion(objects[0].toString());
+    public static void startGame(String rule, String[][] questionsAndAnswers) {
+        printMessage(rule);
+        startQuiz(questionsAndAnswers);
+    }
+
+    public static void startQuiz(String[][] questionsAndAnswers) {
+        for (String[] questionAndAnswer : questionsAndAnswers) {
+            printQuestion(questionAndAnswer[0]);
             printAnswer();
             String answer = scanner.next();
-            checkAnswer(answer, objects[1].toString());
+            checkAnswer(answer, questionAndAnswer[1]);
         }
         winGame();
     }
 
-    public void printQuestion(String question) {
+    public static void printQuestion(String question) {
         printMessage("Question: " + question);
     }
 
-    public void printAnswer() {
+    public static void printAnswer() {
         printMsg("Your answer: ");
     }
 
-    public void checkAnswer(String answer, String correctAnswer) {
+    public static void checkAnswer(String answer, String correctAnswer) {
         if (answer.equals(correctAnswer)) {
             correctAnswer();
         } else {
@@ -84,32 +59,33 @@ public final class Engine {
         }
     }
 
-    public void correctAnswer() {
+    public static void correctAnswer() {
         printMessage("Correct!");
     }
 
-    public void wrongAnswer(String answer, String correctAnswer) {
+    public static void wrongAnswer(String answer, String correctAnswer) {
         printMessage("'" + answer + "' is wrong answer ;(. Correct answer was " + "'" + correctAnswer + "'.");
     }
 
-    public void printError(Object answer) {
+    public static void printError(String answer) {
         printMessage("Unknown symbol " + answer);
+        System.exit(0);
     }
 
-    public void winGame() {
+    public static void winGame() {
         printMessage("Congratulations, " + userName + "!");
     }
 
-    public void endGame() {
+    public static void endGame() {
         printMessage("Let's try again, " + userName + "!");
         System.exit(0);
     }
 
-    public void printMessage(Object msg) {
+    public static void printMessage(String msg) {
         System.out.println(msg);
     }
 
-    public void printMsg(Object msg) {
+    public static void printMsg(String msg) {
         System.out.print(msg);
     }
 }

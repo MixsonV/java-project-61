@@ -10,6 +10,6 @@ clean:
 install:
 	./gradlew install
 
-start:
-	./gradlew clean build install
-	./build/install/app/bin/app
+build-start: clean build install run-dist
+
+.PHONY: build

@@ -6,15 +6,19 @@ public class Even {
     private static final String RULE = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
     public static void start() {
-        Engine engine = new Engine();
-        engine.printMessage(RULE);
+        Engine.startGame(RULE, createQuestionsAndAnswers());
+    }
 
-        Object[][] objects = new Object[engine.getRounds()][2];
-        for (var i = 0; i < engine.getRounds(); i++) {
-            int number = engine.getRandomNumberLockedRange();
-            objects[i] = new Object[]{number, number % 2 == 0 ? "yes" : "no"};
+    public static String[][] createQuestionsAndAnswers() {
+        String[][] questionsAndAnswers = new String[Engine.DEFAULT_ROUNDS][2];
+        for (var i = 0; i < Engine.DEFAULT_ROUNDS; i++) {
+            int number =  Engine.getRandomNumberLockedRange();
+            questionsAndAnswers[i] = new String[]{String.valueOf(number), isEven(number) ? "yes" : "no"};
         }
+        return questionsAndAnswers;
+    }
 
-        engine.startQuiz(objects);
+    public static boolean isEven(int number) {
+        return number % 2 == 0;
     }
 }

@@ -6,18 +6,18 @@ public class GCD {
     private static final String RULE = "Find the greatest common divisor of given numbers.";
 
     public static void start() {
-        Engine engine = new Engine();
-        engine.printMessage(RULE);
+        Engine.startGame(RULE, createQuestionsAndAnswers());
+    }
 
-        Object[][] objects = new Object[engine.getRounds()][2];
-        for (int i = 0; i < engine.getRounds(); i++) {
-            int firstNumber = engine.getRandomNumberLockedRange();
-            int secondNumber = engine.getRandomNumberLockedRange();
+    public static String[][] createQuestionsAndAnswers() {
+        String[][] questionsAndAnswers = new String[Engine.DEFAULT_ROUNDS][2];
+        for (int i = 0; i < Engine.DEFAULT_ROUNDS; i++) {
+            int number1 = Engine.getRandomNumberLockedRange();
+            int number2 = Engine.getRandomNumberLockedRange();
 
-            objects[i] = new Object[]{firstNumber + " " + secondNumber, findGCD(firstNumber, secondNumber)};
+            questionsAndAnswers[i] = new String[]{number1 + " " + number2, String.valueOf(findGCD(number1, number2))};
         }
-
-        engine.startQuiz(objects);
+        return questionsAndAnswers;
     }
 
     public static int findGCD(int a, int b) {

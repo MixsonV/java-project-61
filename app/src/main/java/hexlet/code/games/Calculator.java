@@ -4,33 +4,34 @@ import hexlet.code.Engine;
 
 public class Calculator {
     public static final String RULE = "What is the result of the expression?";
+    public static final String SYMBOLS = "+-*";
 
     public static void start() {
-        Engine engine = new Engine();
-        engine.printMessage(RULE);
+        Engine.startGame(RULE, createQuestionsAndAnswers());
+    }
 
-        String symbols = "+-*";
-        Object[][] objects = new Object[engine.getRounds()][2];
-        for (int i = 0; i < engine.getRounds(); i++) {
-            char symbol = symbols.charAt(engine.getRandomNumber(symbols.length()));
-            int number1 = engine.getRandomNumberLockedRange();
-            int number2 = engine.getRandomNumberLockedRange();
-            String template = number1 + " " + symbol + " " + number2;
-            switch (symbol) {
-                case '+':
-                    objects[i] = new Object[]{template, number1 + number2};
-                    break;
-                case '-':
-                    objects[i] = new Object[]{template, number1 - number2};
-                    break;
-                case '*':
-                    objects[i] = new Object[]{template, number1 * number2};
-                    break;
-                default:
-                    engine.printError(symbol);
-                    engine.endGame();
-            }
+    public static String[][] createQuestionsAndAnswers() {
+        String[][] questionsAndAnswers = new String[Engine.DEFAULT_ROUNDS][2];
+        for (int i = 0; i < Engine.DEFAULT_ROUNDS; i++) {
+            char symbol = SYMBOLS.charAt(Engine.getRandomNumber(SYMBOLS.length()));
+            int number1 = Engine.getRandomNumberLockedRange();
+            int number2 = Engine.getRandomNumberLockedRange();
+            questionsAndAnswers[i] = calculate(number1, number2, symbol);
         }
-        engine.startQuiz(objects);
+        return questionsAndAnswers;
+    }
+
+    public static String[] calculate(int number1, int number2, char symbol) {
+        switch (symbol) {
+            case '+':
+                return new String[]{number1 + " + " + number2, String.valueOf(number1 + number2)};
+            case '-':
+                return new String[]{number1 + " - " + number2, String.valueOf(number1 - number2)};
+            case '*':
+                return new String[]{number1 + " * " + number2, String.valueOf(number1 * number2)};
+            default:
+                Engine.printError(String.valueOf(symbol));
+        }
+        return null;
     }
 }
