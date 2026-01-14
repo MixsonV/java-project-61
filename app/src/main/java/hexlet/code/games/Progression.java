@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,16 +12,16 @@ public class Progression {
     private static final int MAX_LENGTH = 11;
     private static final String HIDING_SYMBOL = "..";
 
-    public static void start() {
-        Engine.startGame(RULE, createQuestionsAndAnswers());
+    public static void start(String userName) {
+        Engine.startGame(RULE, createQuestionsAndAnswers(), userName);
     }
 
     public static String[][] createQuestionsAndAnswers() {
         String[][] questionsAndAnswers = new String[Engine.DEFAULT_ROUNDS][2];
         for (int i = 0; i < Engine.DEFAULT_ROUNDS; i++) {
-            int startNumber = Engine.getRandomNumberLockedRange();
-            int step = Engine.getRandomNumberLockedRange();
-            int length = Engine.getRandomNumber(MIN_LENGTH, MAX_LENGTH);
+            int startNumber = Utils.getRandomNumberLockedRange();
+            int step = Utils.getRandomNumberLockedRange();
+            int length = Utils.getRandomNumber(MIN_LENGTH, MAX_LENGTH);
 
             questionsAndAnswers[i] = hideElement(createProgression(startNumber, step, length));
         }
@@ -41,7 +42,7 @@ public class Progression {
     }
 
     public static String[] hideElement(List<String> progression) {
-        int hiddenPosition = Engine.getRandomNumber(progression.size());
+        int hiddenPosition = Utils.getRandomNumber(progression.size());
         String hiddenNumber = progression.get(hiddenPosition);
         progression.set(hiddenPosition, HIDING_SYMBOL);
         return new String[]{String.join(", ", progression), hiddenNumber};

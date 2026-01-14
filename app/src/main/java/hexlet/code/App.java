@@ -19,7 +19,7 @@ class App {
     private static final String MENU_PRIME = "6";
 
     public static void main(String[] args) {
-        meetingMessage();
+        String userName = welcomeMessage();
         printMenu();
 
         Scanner scanner = new Scanner(System.in);
@@ -29,22 +29,22 @@ class App {
                 System.exit(0);
                 break;
             case MENU_GREET:
-                Cli.printGreets();
+                printHello(userName);
                 break;
             case MENU_EVEN:
-                Even.start();
+                Even.start(userName);
                 break;
             case MENU_GCD:
-                GCD.start();
+                GCD.start(userName);
                 break;
             case MENU_CALCULATOR:
-                Calculator.start();
+                Calculator.start(userName);
                 break;
             case MENU_PROGRESSION:
-                Progression.start();
+                Progression.start(userName);
                 break;
             case MENU_PRIME:
-                Prime.start();
+                Prime.start(userName);
                 break;
             default:
                 System.out.println("'" + choice + "' is not a valid menu item! Application will Exit!");
@@ -64,8 +64,16 @@ class App {
         System.out.print("Your Choice: ");
     }
 
-    public static void meetingMessage() {
+    public static String welcomeMessage() {
         System.out.println("Welcome to the Brain Games!");
-        Cli.greetsThePlayer();
+        System.out.println("May I have your name?");
+        Scanner scanner = new Scanner(System.in);
+        String userName = scanner.next();
+        printHello(userName);
+        return userName;
+    }
+
+    public static void printHello(String userName) {
+        System.out.println("Hello, " + userName + "!");
     }
 }
