@@ -7,11 +7,11 @@ public class Utils {
 
     // get random number in range [0, MaxRange - 1]
     public static int getRandomNumber(int maxRange) {
-        return RANDOM.nextInt(maxRange) + 1;
+        return RANDOM.nextInt(maxRange);
     }
 
     // get random number in range [MinRange, MaxRange - 1]
     public static int getRandomNumber(int minRange, int maxRange) {
-        return RANDOM.nextInt(minRange, maxRange) + 1;
+        return RANDOM.nextInt(minRange, maxRange);
     }
 }
