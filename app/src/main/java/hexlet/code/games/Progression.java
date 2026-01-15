@@ -11,16 +11,18 @@ public class Progression {
     private static final int MIN_LENGTH = 5;
     private static final int MAX_LENGTH = 11;
     private static final String HIDING_SYMBOL = "..";
+    private static final int MIN_RANGE = 1;
+    private static final int MAX_RANGE = 100;
 
-    public static void start(String userName) {
-        Engine.startGame(RULE, createQuestionsAndAnswers(), userName);
+    public static void start() {
+        Engine.startGame(RULE, createQuestionsAndAnswers());
     }
 
     public static String[][] createQuestionsAndAnswers() {
         String[][] questionsAndAnswers = new String[Engine.DEFAULT_ROUNDS][2];
         for (int i = 0; i < Engine.DEFAULT_ROUNDS; i++) {
-            int startNumber = Utils.getRandomNumberLockedRange();
-            int step = Utils.getRandomNumberLockedRange();
+            int startNumber = Utils.getRandomNumber(MIN_RANGE, MAX_RANGE);
+            int step = Utils.getRandomNumber(MIN_RANGE, MAX_RANGE);
             int length = Utils.getRandomNumber(MIN_LENGTH, MAX_LENGTH);
 
             questionsAndAnswers[i] = hideElement(createProgression(startNumber, step, length));
@@ -31,14 +33,10 @@ public class Progression {
     public static List<String> createProgression(int startNumber, int step, int length) {
         List<String> result = new ArrayList<>();
         for (var j = 0; j < length; j++) {
-            int number = findCurrentElement(startNumber, step, j);
+            int number = startNumber + step * j;
             result.add(String.valueOf(number));
         }
         return result;
-    }
-
-    public static int findCurrentElement(int start, int step, int index) {
-        return start + step * index;
     }
 
     public static String[] hideElement(List<String> progression) {
