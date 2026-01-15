@@ -43,6 +43,6 @@ public class Progression {
         int hiddenPosition = Utils.getRandomNumber(progression.size());
         String hiddenNumber = progression.get(hiddenPosition);
         progression.set(hiddenPosition, HIDING_SYMBOL);
-        return new String[]{String.join(", ", progression), hiddenNumber};
+        return new String[]{String.join(" ", progression), hiddenNumber};
     }
 }
